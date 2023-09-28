@@ -3,6 +3,7 @@ import os
 import gradio as gr
 
 from scripts.animatediff_mm import mm_animatediff as motion_module
+from scripts.animatediff_logger import logger_animatediff as logger
 
 
 class ToolButton(gr.Button, gr.components.FormComponent):
@@ -39,6 +40,7 @@ class AnimateDiffProcess:
         latent_power_last=1,
         latent_scale_last=32,
     ):
+        logger.info('initializing AnimateDiffProcess!!!')
         self.model = model
         self.enable = enable
         self.video_length = video_length
@@ -70,9 +72,7 @@ class AnimateDiffProcess:
         assert (
             self.video_length >= 0 and self.fps > 0
         ), "Video length and FPS should be positive."
-        assert not set(["GIF", "MP4", "PNG"]).isdisjoint(
-            self.format
-        ), "At least one saving format should be selected."
+        
 
     def set_p(self, p):
         self._check()
