@@ -1,5 +1,5 @@
 import os
-
+import json
 import gradio as gr
 from modules import script_callbacks, scripts, shared
 from modules.processing import (Processed, StableDiffusionProcessing,
