@@ -69,6 +69,7 @@ class AnimateDiffProcess:
         return list_var
 
     def _check(self):
+        logger.info("format is %s", self.format)
         assert (
             self.video_length >= 0 and self.fps > 0
         ), "Video length and FPS should be positive."
