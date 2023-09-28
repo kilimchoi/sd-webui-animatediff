@@ -43,7 +43,10 @@ class AnimateDiffScript(scripts.Script):
         if isinstance(params, dict): params = AnimateDiffProcess(**params)
         if params.enable:
             logger.info("AnimateDiff process start.")
+            dict_string = json.dumps(params)
+            logger.info("params are ", dict_string)
             params.set_p(p)
+            logger.info("About to inject!!!!!")
             motion_module.inject(p.sd_model, params.model)
             self.lora_hacker = AnimateDiffLora(motion_module.mm.using_v2)
             self.lora_hacker.hack()
