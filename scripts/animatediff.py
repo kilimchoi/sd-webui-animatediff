@@ -1,5 +1,4 @@
 import os
-import json
 import gradio as gr
 from modules import script_callbacks, scripts, shared
 from modules.processing import (Processed, StableDiffusionProcessing,
@@ -43,8 +42,6 @@ class AnimateDiffScript(scripts.Script):
         if isinstance(params, dict): params = AnimateDiffProcess(**params)
         if params.enable:
             logger.info("AnimateDiff process start.")
-            dict_string = json.dumps(params)
-            logger.info("params are %s", dict_string)
             params.set_p(p)
             logger.info("About to inject!!!!!")
             motion_module.inject(p.sd_model, params.model)
