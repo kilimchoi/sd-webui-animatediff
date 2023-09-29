@@ -50,7 +50,7 @@ class AnimateDiffProcess:
         self.batch_size = batch_size
         self.stride = stride
         self.overlap = overlap
-        self.format = "MP4"
+        self.format = format
         self.interp = interp
         self.interp_x = interp_x
         self.reverse = reverse
