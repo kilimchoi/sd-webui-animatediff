@@ -115,7 +115,7 @@ class AnimateDiffOutput:
 
         # remove tmp folder
         try: shutil.rmtree(tmp_folder)
-        except OSError as e: print(f"Error: {e}")
+        except OSError as e: print(f"OSError in animatediff: blame animated diff{e}")
 
         return video_list
 
