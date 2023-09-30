@@ -45,6 +45,7 @@ class AnimateDiffScript(scripts.Script):
             params.set_p(p)
             logger.info("About to inject!!!!!")
             motion_module.inject(p.sd_model, params.model)
+            logger.info("Using v2?", motion_module.mm.using_v2)
             self.lora_hacker = AnimateDiffLora(motion_module.mm.using_v2)
             self.lora_hacker.hack()
             # self.cfg_hacker = AnimateDiffInfV2V(p)
