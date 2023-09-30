@@ -43,7 +43,7 @@ class AnimateDiffMM:
             raise RuntimeError("Please download models manually.")
         if self.mm is None or self.mm.mm_hash != model_hash:
             logger.info(f"Loading motion module {model_name} from {model_path}")
-            mm_state_dict = sd_models.read_state_dict(model_path)
+            mm_state_dict = torch.load(model_path, map_location=device)
             self.mm = MotionWrapper(model_hash, using_v2)
             missed_keys = self.mm.load_state_dict(mm_state_dict)
             logger.warn(f"Missing keys {missed_keys}")
