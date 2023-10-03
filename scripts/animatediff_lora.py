@@ -26,6 +26,8 @@ class AnimateDiffLora:
         original_load_network = self.original_load_network
 
         def mm_load_network(name, network_on_disk):
+            logger.info("Enters mm_load_network!!!!")
+            logger.info(f"network_on_disk is {network_on_disk}")
 
             def convert_mm_name_to_compvis(key):
                 sd_module_key, _, network_part = re.split(r'(_lora\.)', key)
