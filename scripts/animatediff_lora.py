@@ -23,6 +23,7 @@ class AnimateDiffLora:
         import network
         import networks
         self.original_load_network = networks.load_network
+        logger.info(f"self.original_load_network is {self.original_load_network}")
         original_load_network = self.original_load_network
 
         def mm_load_network(name, network_on_disk):
@@ -30,10 +31,11 @@ class AnimateDiffLora:
             logger.info(f"network_on_disk is {network_on_disk}")
 
             def convert_mm_name_to_compvis(key):
+                logger.info("enters convert_mm_name_to_compvis!!!!")
                 sd_module_key, _, network_part = re.split(r'(_lora\.)', key)
                 sd_module_key = sd_module_key.replace("processor.", "").replace("to_out", "to_out.0")
                 return sd_module_key, 'lora_' + network_part
-
+            logger.info(f"network_on_disk is {network_on_disk}")
             net = network.Network(name, network_on_disk)
             net.mtime = os.path.getmtime(network_on_disk.filename)
 
